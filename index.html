@@ -60,8 +60,15 @@
   repo: 'ams5.0-doc',     // 存放评论的仓库
   owner: 'jack9588',          // 仓库的创建者，
   admin: ['jack9588'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
-  id: location.pathname,      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
+  title: location.hash.match(/#(.*?)([?]|$)/)[1],
+  id: location.hash.match(/#(.*?)([?]|$)/)[1]    // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
 })
-gitalk.render('gitalk-container');    // 渲染Gitalk评论组件
+ // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
+ window.onhashchange = function(event){
+      if(event.newURL.split('?')[0] !== event.oldURL .split('?')[0]) {
+        location.reload()
+      }
+    }
+//gitalk.render('gitalk-container');    // 渲染Gitalk评论组件
 </script>
   </html>

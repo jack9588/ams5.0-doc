@@ -18,7 +18,21 @@
       subMaxLevel: 3,
       homepage: 'README.md',
       coverpage: true,
-      loadSidebar: true
+      loadSidebar: true,
+      search: {
+        noData: {
+          '/de-de/': 'Keine Ergebnisse!',
+          '/zh-cn/': '没有结果!',
+          '/': 'No results!'
+        },
+        paths: 'auto',
+        placeholder: {
+          '/de-de/': 'Suche',
+          '/zh-cn/': '搜索',
+          '/': 'Search'
+        },
+        pathNamespaces: ['/zh-cn', '/de-de', '/ru-ru', '/es']
+      }
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
